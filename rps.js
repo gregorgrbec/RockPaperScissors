@@ -1,14 +1,11 @@
 function getComputerChoice() {
   choice = Math.floor(Math.random() * 3);
-  if (choice === 0) return "Rock";
-  else if (choice === 1) return "Paper";
-  else return "Scissors";
+  if (choice === 0) return "rock";
+  else if (choice === 1) return "paper";
+  else return "scissors";
 }
 
 function determineOutcome(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerSelection.toLowerCase();
-
   //   Player chooses rock
   if ((playerSelection == "rock") & (computerSelection == "rock")) {
     return "It's a tie!";
@@ -39,27 +36,60 @@ function determineOutcome(playerSelection, computerSelection) {
   }
 }
 
-// function game() {
-//   playerWinCount = 0;
-//   computerWinCount = 0;
+function oneRound(playerSelection, playerWinCount, computerWinCount) {
+  computerSelection = getComputerChoice();
 
-//   while ((playerWinCount != 3) & (computerWinCount != 3)) {
-//     computerSelection = getComputerChoice();
-//     playerSelection = prompt("Write 'rock', 'paper' or 'scissors'");
+  // Changing images of choices
+  document.getElementById("you").src = `${playerSelection}.png`;
+  document.getElementById("bot").src = `${computerSelection}_2.png`;
 
-//     outcome = determineOutcome(playerSelection, computerSelection);
-//     console.log(outcome);
-//     if (outcome == "You lose!") {
-//       computerWinCount += 1;
-//     } else if (outcome == "You win!") {
-//       playerWinCount += 1;
-//     }
-//     console.log("Computer wins: ", computerWinCount);
-//     console.log("Player wins: ", playerWinCount);
+  outcome = determineOutcome(playerSelection, computerSelection);
+  if (outcome == "You lose!") {
+    document.querySelector(".instructions").textContent = "You lose this round";
+    computerWinCount++;
+    document.querySelector(".computer-score").textContent = computerWinCount;
+  } else if (outcome == "You win!") {
+    document.querySelector(".instructions").textContent = "You win this round";
+    playerWinCount++;
+    document.querySelector(".player-score").textContent = playerWinCount;
+  } else {
+    document.querySelector(".instructions").textContent = "It's a tie";
+  }
+}
 
-//     if (computerWinCount == 3) console.log("Computer wins this game");
-//     else if (playerWinCount == 3) console.log("Player wins this game");
-//   }
-// }
+// One round being played on every button click
+const btns = document.querySelectorAll("button");
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    playerSelection = btn.id;
+    playerWinCount = document.querySelector(".player-score").textContent;
 
-// game();
+    computerWinCount = document.querySelector(".computer-score").textContent;
+    oneRound(playerSelection, playerWinCount, computerWinCount);
+
+    // Checking if the game is finished
+    if (
+      (Number(document.querySelector(".computer-score").textContent) == 3) |
+      (Number(document.querySelector(".player-score").textContent) == 3)
+    ) {
+      if (Number(document.querySelector(".computer-score").textContent) == 3) {
+        document.querySelector(".instructions").textContent = "Computer wins";
+      } else if (
+        Number(document.querySelector(".player-score").textContent) == 3
+      ) {
+        document.querySelector(".instructions").textContent = "Player wins";
+      }
+
+      // Removing the three buttons and adding play again button
+      playAgainBtn = document.createElement("button");
+      playAgainBtn.classList.add("playAgainBtn");
+      playAgainBtn.textContent = "Play again";
+      playAgainBtn.addEventListener("click", () => document.location.reload());
+
+      document.querySelector(".buttons").appendChild(playAgainBtn);
+      document.querySelector("#scissors").remove();
+      document.querySelector("#rock").remove();
+      document.querySelector("#paper").remove();
+    }
+  });
+});
