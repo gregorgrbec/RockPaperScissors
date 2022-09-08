@@ -1,0 +1,98 @@
+div {
+    /* border: solid 3px; */
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+
+}
+
+@font-face {
+    font-family: cartoonish;
+    src: url(Honey\ Mints.ttf);
+  }
+
+h1 {
+    font-family: cartoonish;
+    text-align: center;
+    font-size:100px;
+    border: 0px;
+    margin: 12px;
+}
+
+.display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-top: 60px;
+}
+
+.display div {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    width: max-content;
+    height: 300px;
+    padding: 15px;
+
+}
+
+.player-choice, .computer-choice {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-choice-text, .computer-choice-text {
+    margin-top: 15px;
+}
+
+.scores {
+    display: flex;
+    text-align: center;
+    
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 8px;
+    height: 100px;
+    width: 100px;
+    
+}
+
+img {
+   width:150px;
+}
+
+button img {
+    width:70px;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cartoonish;
+    font-size: 100px;
+    padding: 8px;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: cartoonish;
+    font-size: 50px;
+    padding: 8px;
+    margin-bottom: 15px;
+}
