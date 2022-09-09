@@ -35,7 +35,7 @@ h1 {
     display: flex;
     align-items: center;
     /* justify-content: center; */
-    width: max-content;
+    /* width: max-content; */
     height: 300px;
     padding: 15px;
 
@@ -48,6 +48,7 @@ h1 {
 
 .player-choice-text, .computer-choice-text {
     margin-top: 15px;
+    height:67px
 }
 
 .scores {
@@ -102,3 +103,83 @@ h3 {
     margin-bottom: 15px;
     margin-top: 15px;
 }
+
+@media (max-width: 700px) {
+    h1{
+        font-size: 50px;
+    }
+
+    h3 {
+        font-size: 45px;
+        align-items: baseline;
+    }
+
+    h2 {
+        font-size: 60px;
+        padding: 0px;
+        width: 30px;
+    }
+
+    img {
+        width: 55px;
+        height: auto;
+    }
+
+    #bot, #you {
+        width: 75px;
+        height: auto;
+    }
+
+    
+
+    .display {
+        margin-top:25px
+    
+    }
+
+    .display div {
+        height: 125px;
+        padding: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
+        /* justify-content: center; */
+    
+    }
+
+
+
+    .middle {
+        width: 100px;
+        padding: 0px;
+    }
+
+    .scores{
+        width: 100px;
+        justify-content: center;
+    }
+
+    
+
+    .player-choice-text, .computer-choice-text {
+        font-size: 30px;
+        height: 50px;
+        margin-top: 0px;
+    }
+
+    .player-data, .computer-data {
+        width: 105px;
+        /* align-items: center; */
+        justify-content: center;
+    }
+
+    .player-choice, .computer-choice {
+
+        align-items: baseline;
+        justify-content:start;
+    }
+
+    .instructions{
+        margin-top: 45px;
+    }
+
+  }
